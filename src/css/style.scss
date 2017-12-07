@@ -1,0 +1,127 @@
+$base-font-size: 16px;
+$small-font-size: 12px;
+$header-font-size: 24px;
+$regular-padding: 10px;
+$small-margin: 5px;
+$regular-margin: 10px;
+$song-line-height: 35px;
+$control-bar-height: 100px;
+$songs-list-max-width: 800px;
+$play-button-size: 50px;
+$accent-color: darkorange;
+
+body {
+  background-color: lightgray;
+  margin: 0;
+  font-size: $base-font-size;
+}
+
+.songs {
+  max-width: $songs-list-max-width;
+  margin: 0 auto $control-bar-height+$regular-margin auto;
+  background-color: white;
+  padding: $regular-padding;
+}
+
+.songs__header {
+  position: relative;
+  font-weight: bold;
+  font-size: $header-font-size;
+  text-align: center;
+  padding: $regular-padding;
+}
+
+.song {
+  position: relative;
+  padding: $regular-padding;
+  height: $song-line-height;
+  border-bottom: 1px groove;
+}
+
+.song--selected .song__title {
+  font-weight: bold;
+}
+
+.song__play-pause-button {
+  width: $song-line-height;
+  height: $song-line-height;
+  display: inline-block;
+  background-image: url('../images/play-icon-small.png');
+  background-position: center;
+  cursor: pointer;
+  content: '';
+  margin-right: $small-margin;
+}
+
+.song--playing .song__play-pause-button {
+  background-image: url('../images/paused-icon-small.png');
+}
+
+.song__details {
+  display: inline-block;
+}
+
+.song__artist {
+  font-size: $small-font-size;
+}
+
+.song__duration {
+  display: inline-block;
+  text-align: right;
+  float: right;
+  line-height: $song-line-height;
+  height: $song-line-height;
+}
+
+.control-bar {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: $control-bar-height;
+  bottom: 0;
+  background-color: white;
+  box-sizing: border-box;
+  padding: $regular-padding;
+}
+
+.control-bar__details {
+  flex-grow: 1;
+  width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.control-bar__artist {
+  font-size: $small-font-size;
+}
+
+.control-bar__control {
+  flex-basis: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.control-bar__play-pause-button {
+  border-radius: 50%;
+  height: $play-button-size;
+  width: $play-button-size;
+  background-image: url('../images/play-icon-small.png');
+  background-position: center;
+  background-color: $accent-color;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.control-bar--playing .control-bar__play-pause-button {
+  background-image: url('../images/paused-icon-small.png');
+}
+
+.control-bar__countdown {
+  flex-grow: 1;
+  width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: $accent-color;
+}
