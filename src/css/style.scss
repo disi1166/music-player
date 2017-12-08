@@ -97,7 +97,7 @@ body {
 }
 
 .control-bar__control {
-  flex-basis: 50px;
+  flex-basis: $play-button-size;
   display: flex;
   align-items: center;
 }
