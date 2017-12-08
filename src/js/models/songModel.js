@@ -56,8 +56,8 @@ var SongModel = Backbone.Model.extend({
     this.set({playing: false});
     this.trigger('stopSong');
     this.resetSong();
-    clearInterval(this.countdouwn);
     this.stopAudioReproduction();
+    clearInterval(this.countdouwn);
   },
 
   resetSong: function() {

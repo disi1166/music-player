@@ -7,6 +7,7 @@ describe('SongsCollections', () => {
   let songModel2;
   beforeEach(() => {
     songModel1 = new SongModel({id: 1, playing: true});
+    songModel1.audioTrack = {play: function() {}, pause: function() {}}
     songModel2 = new SongModel({id: 2});
     songsCollection = new SongsCollections();
     songsCollection.add(songModel1);

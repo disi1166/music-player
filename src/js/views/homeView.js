@@ -6,7 +6,7 @@ var HomeView = Backbone.View.extend({
   initialize: function() {
     this.songsComponent = new SongsComponent({collection: this.collection});
     this.controlBarComponent = new ControlBarComponent();
-    this.songsComponent.on('songPlayed', this.songPlayed, this);
+    this.collection.on('playSong', this.songPlayed, this);
   },
   render: function() {
     this.$el.html(this.songsComponent.render().el);
