@@ -9,9 +9,11 @@ $control-bar-height: 100px;
 $songs-list-max-width: 800px;
 $play-button-size: 50px;
 $accent-color: darkorange;
+$inactive-color: lightgray;
+$background-color: lightgray;
 
 body {
-  background-color: lightgray;
+  background-color: $background-color;
   margin: 0;
   font-size: $base-font-size;
 }
@@ -108,9 +110,13 @@ body {
   width: $play-button-size;
   background-image: url('../images/play-icon-small.png');
   background-position: center;
-  background-color: $accent-color;
+  background-color: $inactive-color;
   background-repeat: no-repeat;
   cursor: pointer;
+}
+
+.control-bar--selected .control-bar__play-pause-button {
+  background-color: $accent-color;
 }
 
 .control-bar--playing .control-bar__play-pause-button {

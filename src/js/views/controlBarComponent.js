@@ -9,16 +9,12 @@ var ControlBarComponent = SongComponent.extend({
     events: {
       'click .control-bar__play-pause-button': 'playPauseSong'
     },
-    render: function() {
-      this.$el.html(this.template(this.model.toJSON()));
-      return this;
-    },
-    start: function(song) {
-      this.initializeSong(song);
+    startSong: function(song) {
+      this.initializeSongModel(song);
       this.playSong();
       this.render();
     },
-    initializeSong: function(song) {
+    initializeSongModel: function(song) {
       this.model = song;
       this.model.on('playSong', this.playSong, this);
       this.model.on('pauseSong', this.pauseSong, this);
@@ -27,7 +23,7 @@ var ControlBarComponent = SongComponent.extend({
       this.model.startTimer();
     },
     stopSong: function() {
-      SongComponent.prototype.pauseSong.apply(this);
+      SongComponent.prototype.stopSong.apply(this);
       this.model = new SongModel();
       this.render();
     }

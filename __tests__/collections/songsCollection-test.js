@@ -30,9 +30,20 @@ describe('SongsCollections', () => {
       expect(songModel2.get('playing')).toBeFalsy();
       expect(songsCollection.selectedSongIndex).toBe(0);
     });
+
+    it('should only update the selectedSongIndex, given no song is being played', () => {
+      songModel1.set('playing', false);
+
+      songsCollection.selectedSongIndex = null;
+
+      songsCollection.updateSelectedSong(songModel2);
+
+      expect(songModel1.get('playing')).toBeFalsy();
+      expect(songsCollection.selectedSongIndex).toBe(1);
+    });
   });
 
-  describe('when playNextSongIfAvailable', () => {
+  describe('when playNextSongIfAvailable is called', () => {
     it('should play next song, given next song exists', () => {
       spyOn(songModel2, 'playSong');
 
@@ -42,13 +53,13 @@ describe('SongsCollections', () => {
       expect(songModel2.playSong).toHaveBeenCalled();
     });
 
-    it('should do nothing  is called, given next song does not exist', () => {
+    it('should set selectedSongIndex to null, given next song does not exist', () => {
       songsCollection.selectedSongIndex = 1;
       spyOn(songModel1, 'playSong');
 
       songsCollection.playNextSongIfAvailable();
 
-      expect(songsCollection.selectedSongIndex).toBe(1);
+      expect(songsCollection.selectedSongIndex).toBe(null);
       expect(songModel1.playSong).not.toHaveBeenCalled();
     });
   });

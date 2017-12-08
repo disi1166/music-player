@@ -14,7 +14,7 @@ var HomeView = Backbone.View.extend({
   },
   songPlayed: function(song) {
     if (this.newSongPlayed(song)) {
-      this.controlBarComponent.start(song);
+      this.controlBarComponent.startSong(song);
     }
   },
   newSongPlayed: function(song) {

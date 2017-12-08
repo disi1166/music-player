@@ -9,19 +9,22 @@ var SongsCollection = Backbone.Collection.extend({
   },
   updateSelectedSong: function(song) {
     let newSelectedSongIndex = this.indexOf(song);
-    if (newSelectedSongIndex != this.selectedSongIndex) {
-      if (this.selectedSongIndex !== null) {
-        let s = this.at(this.selectedSongIndex);
-        s.stopSong();
-      }
-      this.selectedSongIndex = newSelectedSongIndex;
+    if (this.differentSongCurrentlyPlaying(newSelectedSongIndex)) {
+      let currentSong = this.at(this.selectedSongIndex);
+      currentSong.stopSong();
     }
+    this.selectedSongIndex = newSelectedSongIndex;
   },
   playNextSongIfAvailable: function() {
     if (this.selectedSongIndex < this.length - 1) {
       this.selectedSongIndex++;
       this.at(this.selectedSongIndex).playSong();
+    } else {
+      this.selectedSongIndex = null;
     }
+  },
+  differentSongCurrentlyPlaying: function(newSelectedSongIndex) {
+    return this.selectedSongIndex !== null && newSelectedSongIndex != this.selectedSongIndex;
   }
 });
 
